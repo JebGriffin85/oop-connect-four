@@ -25,7 +25,19 @@ function updateUI() {
         for (let j = 0; j <= 6; j++) {
            let boardSquare = document.getElementById(`square-${i}-${j}`)
           let gameVar = game.getCombinedTokenAt(i, j)
-          console.log(gameVar)
+          boardSquare.innerHTML = "";
+          if (gameVar === 1) {
+              let divEl = document.createElement("div");
+              divEl.classList.add("token")
+              divEl.classList.add("black")
+              boardSquare.appendChild(divEl)
+          }
+          if (gameVar === 2) {
+            let divEl2 = document.createElement("div");
+            divEl2.classList.add("token")
+            divEl2.classList.add("red")
+            boardSquare.appendChild(divEl2)
+          }
         }
     }
 }
