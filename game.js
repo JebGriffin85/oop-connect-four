@@ -5,21 +5,23 @@ export class Game {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
         this.currentPlayer = 1;
-        this.column = [ new Column(), new Column(), new Column(), new Column(), new Column(), new Column(), new Column() ];
+        this.columns = [ new Column(), new Column(), new Column(), new Column(), new Column(), new Column(), new Column() ];
 
     }
     getName(){
         return `${this.playerOne} vs. ${this.playerTwo}`;
     }
     playInColumn(columnIndex){
-        let choosenCol = this.column[columnIndex];
-        // Column.add(choosenCol());
-        this.column[columnIndex].add(this.currentPlayer)
+        this.columns[columnIndex].add(this.currentPlayer)
 
         if(this.currentPlayer === 1) {
             this.currentPlayer = 2;
         } else {
             this.currentPlayer = 1;
         }
+    }
+
+    getCombinedTokenAt(rowIndex, columnIndex) {
+        return this.columns[columnIndex].getTokenAt(rowIndex)
     }
 }

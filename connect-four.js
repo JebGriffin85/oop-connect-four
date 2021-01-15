@@ -1,4 +1,5 @@
 import { Game } from './game.js';
+import { Column } from './column.js';
 
 let game = undefined;
 const clickTargets = document.getElementById("click-targets");
@@ -20,8 +21,13 @@ function updateUI() {
             clickTargets.classList.remove("black");
         }
     }
-
-
+    for (let i = 0; i <= 5; i++) {
+        for (let j = 0; j <= 6; j++) {
+           let boardSquare = document.getElementById(`square-${i}-${j}`)
+          let gameVar = game.getCombinedTokenAt(i, j)
+          console.log(gameVar)
+        }
+    }
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -57,7 +63,10 @@ window.addEventListener("DOMContentLoaded", () => {
         updateUI();
 
     clickTargets.addEventListener("click", event => {
-        game.playInColumn();
+        const circleTarget = event.target.id
+        const circleTargetVal = Number.parseInt(circleTarget[circleTarget.length - 1])
+
+        game.playInColumn(circleTargetVal);
         updateUI();
     })
 
